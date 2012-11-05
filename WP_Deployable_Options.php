@@ -8,7 +8,7 @@ class WP_Deployable_Options {
 			$json = json_decode(WP_DEPLOYABLE_OPTIONS_JSON);
 			$this->add_filters_for_options($json);
 		}
-		self::has_initialized();
+		self::$has_initialized = true;
 	}
 
 	private function add_filters_for_options($json) {
@@ -25,9 +25,5 @@ class WP_Deployable_Options {
 
 	private static function has_not_already_initialized() {
 		return !self::$has_initialized;
-	}
-
-	private static function has_initialized() {
-		self::$has_initialized = true;
 	}
 }
